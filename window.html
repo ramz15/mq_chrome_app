@@ -1,0 +1,55 @@
+<html data-ng-app="marqueedApp" ng-csp="">
+<head>
+<meta charset="utf-8" />
+<title>Marqueed Screenshots!</title>
+<link rel="stylesheet" media="all" href="css/main.css">
+<link rel="stylesheet" media="all" href="css/dropzone.css">
+<base target="_blank">
+</head>
+<body >
+
+<section id="main" ng-controller="MarqueedController">
+
+  <div id="sign_up_box">
+    <div class="mq-shots-logo"><img src="images/mq_logo.png" width="170px"></div>
+    <div class="screenshots">Screenshots!</div>
+    <div class="simple-text">The easiest way to share screenshots</div>
+    <div class="signup-line"></div>
+    <div class="google-login"><img src="images/google_login.png" width="195px"></div>
+    <div class="or-login"><span id="or_text">OR</span> <span id="via_account">login via your Marqueed account</span></div>
+
+    <div id="login_form">
+      <form ng-submit="loginUser()">
+        <input class="input-field left-input" placeholder="EMAIL" size="30" type="email" value="">
+        <input id="login_password" class="input-field" name="user[password]" placeholder="PASSWORD" size="30" type="password">
+        <input class="login-submit submit-button" name="commit" type="submit" value="LOGIN">
+      </form>
+      <div class="account-text">No account? <a id="signup_account" href="#" ng-click="showSignupForm()">SIGN UP</a></div>
+    </div>
+
+    <div id="signup_form">
+      <form ng-submit="signupUser()">
+        <input id="signup_first_name" class="input-field left-input" name="user[first_name]" placeholder="FIRST NAME" size="30" type="text">
+        <input id="signup_last_name" class="input-field" name="user[last_name]" placeholder="LAST NAME" size="30" type="text">
+        <input id="signup_email" class="input-field left-input" placeholder="EMAIL" size="30" type="email" value="">
+        <input id="signup_password" class="input-field" name="user[password]" placeholder="PASSWORD" size="30" type="password">
+        <input class="signup-submit submit-button" name="commit" type="submit" value="SIGN UP">
+      </form>
+      <div class="account-text">Got an account? <a id="login_account" href="#" ng-click="showLoginForm()">LOGIN</a></div>
+    </div>
+
+  </div>
+
+  <form action="/file-upload" class="dropzone" id="dropzone_form"></form>
+
+</section>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/util.js"></script>
+<script src="js/resumableupload.js"></script>
+<script src="js/gdocs.js"></script>
+<script src="js/angular_1.0.7.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/dropzone.js"></script>
+
+</body>
+</html>

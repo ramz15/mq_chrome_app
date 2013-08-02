@@ -1,0 +1,31 @@
+{
+  "name": "Marqueed Screenshots",
+  "description": "Simple Screenshot Sharing",
+  "version": "0.1",
+  "app": {
+    "background": {
+      "scripts": ["js/background.js"]
+    }
+  },
+  "manifest_version": 2,
+  "oauth2": {
+    "client_id": "440580062850-49411snc1o961f5dvei87c1jsi58u23c.apps.googleusercontent.com",
+    "scopes": [
+      "https://docs.google.com/feeds/",
+      "https://docs.googleusercontent.com/",
+      "https://www.googleapis.com/auth/drive"
+    ]
+  },
+  "permissions": [
+    "identity",
+  	"fileSystem",
+    "experimental",
+    "clipboardWrite",
+    "storage",
+    "https://docs.google.com/feeds/",
+    "https://docs.googleusercontent.com/",
+    "https://ssl.gstatic.com/",
+    "https://www.googleapis.com/"
+  ],
+  "icons": { "16": "mq_icon_16.png", "128": "mq_icon_128.png" }
+}

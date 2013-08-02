@@ -1,0 +1,170 @@
+@font-face {
+  font-family: 'proxima_nova_reg';
+  font-style: normal;
+  font-weight: 400;
+  src: local('proxima_nova_reg'), url(proxima_nova_reg.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'proxima_nova_thin';
+  font-style: normal;
+  font-weight: 400;
+  src: local('proxima_nova_thin'), url(proxima_nova_thin.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'proxima_nova_cond_sbold';
+  font-style: normal;
+  font-weight: 400;
+  src: local('proxima_nova_cond_sbold'), url(proxima_nova_cond_sbold.woff) format('woff');
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: url('../images/bg.png');
+/*  background: #444;
+*/}
+
+body {
+  padding: 15px;
+  overflow: hidden;
+/*  background: url(../img/google_drive_logo.jpg) no-repeat 80% 20%,
+              -webkit-linear-gradient(bottom, #eee, rgba(255,255,255,0));*/
+  background-size: 270px 215px, 100%;
+  font-family: 'proxima_nova_reg', sans-serif;
+}
+
+#sign_up_box {
+  border-radius: 5px;
+  background: white;
+  left: 50%;
+  margin-left: -275px;
+  width: 450px;
+  position: absolute;
+  top: 50px;
+  height: auto;
+  padding: 50px;
+  font-family: 'proxima_nova_reg', sans-serif;
+}
+
+.simple-text {
+  color: #888;
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 22px;
+  font-family: 'proxima_nova_thin', sans-serif;
+}
+
+.or-login {
+  color: #999;
+  font-size: 13px;
+  right: 1px;
+  display: inline-block;
+  top: -15px;
+  position: relative;
+}
+
+#or_text {
+  color: #999;
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.google-login {
+  width: 211px;
+  display: inline-block;
+  margin-bottom: 27px;
+}
+
+.mq-shots-logo {
+  width: 170px;
+  margin: 0 auto;
+}
+
+.screenshots {
+  font-family: 'proxima_nova_thin', sans-serif;
+  color: #81B9DA;
+  font-size: 44px;
+  margin: -8px auto 20px;
+  width: 240px;
+}
+
+.input-field{
+  width: 213px;
+  padding: 9px 0px 9px 15px;
+  border: 1px solid #959595;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  margin-bottom: 15px;
+  font-size: 16px;
+  background: #e3dddd;
+  -webkit-box-shadow: inset 0px 2px 5px 0px rgba(0,0,0,0.16);
+  box-shadow: inset 0px 2px 5px 0px rgba(0,0,0,0.16);
+  font-family: "proxima_nova_reg", Helvetica, Arial;
+}
+
+#login_form {
+  display: none;
+}
+
+.signup-line {
+  height: 1px;
+  width: 550px;
+  background: #ddd;
+  position: relative;
+  left: -50px;
+  margin-bottom: 25px;
+}
+
+.submit-button {
+  background-color: #1aa8e1;
+  background-image: linear-gradient(to bottom, #1aa8e1, #129ae0);
+  width: 100%;
+  font-size: 20px;
+  color: white;
+  font-weight: 100;
+  padding: 13px 15px 11px;
+  margin-top: 5px;
+  border: 1px solid #4c4c4c;
+  box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.44),inset 0px 1px 3px 0px rgba(255,255,255,0.44);
+  font-family: "proxima_nova_cond_sbold", Helvetica, Arial;
+  border-radius: 5px;
+}
+
+#dropzone_form {
+  display: none;
+}
+
+nav:hover #close-button {
+  opacity: 1;
+}
+
+#close-button {
+  float: right;
+  padding: 0 5px 2px 5px;
+  font-weight: bold;
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+
+.date {
+  float: right;
+}
+
+.left-input { margin-right: 20px; }
+
+.account-text {
+  text-align: center;
+  position: relative;
+  bottom: -24px;
+  color: #999;
+  font-size: 14px;
+}
+
+.account-text a {
+  text-decoration: none;
+  color: #1aa8e1;
+}
