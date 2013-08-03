@@ -106,6 +106,10 @@ body {
   font-family: "proxima_nova_reg", Helvetica, Arial;
 }
 
+#sign_up_box {
+  display: none;
+}
+
 #login_form {
   display: none;
 }

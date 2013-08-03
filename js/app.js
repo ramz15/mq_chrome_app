@@ -8,6 +8,19 @@ function MarqueedController($scope) {
 
   $scope.userInfo = {};
 
+  $scope.init = function() {
+    var signedIn = false
+    chrome.storage.sync.get('token', function(value) {
+      $scope.userToken = value.token
+    });
+    if ($scope.userToken) {
+      console.log('loggedin');
+    } else {
+      $('#sign_up_box').show();
+    }
+  };
+
+
   $scope.showSignupForm = function() {
     $('#login_form').hide();
     $('#signup_form').show();
@@ -21,23 +34,51 @@ function MarqueedController($scope) {
   };
 
   $scope.signupUser = function() {
-    console.log("signup user man ajax request here")
-    first_name = $('.first-name')
+    first_name = $('#signup_first_name').val()
+    last_name = $('#signup_last_name').val()
+    email = $('#signup_email').val()
+    password = $('#signup_password').val()
     $.ajax({
       type: 'post',
-      url: 'http://marqueed.com',
+      url: 'http://www.marq.com:3000/api/v1/api_users.json',
       data: {
-        name: '',
-        last_name: ''
+        first_name: first_name,
+        last_name: last_name,
+        email: email,
+        password: password
       },
       success: function(res) {
-        return "yo";
+        console.log(res.token);
       }
     });
   };
 
   $scope.loginUser = function() {
-    console.log("login user man ajax request here")
+    email = $('#login_email').val()
+    password = $('#login_password').val()
+    $.ajax({
+      type: 'post',
+      url: 'http://www.marq.com:3000/api/v1/tokens.json',
+      data: {
+        email: email,
+        password: password
+      },
+      success: function(res) {
+        console.log(res.token);
+        if (res.token) {
+          $('#sign_up_box').hide();
+          $('#drag_drop').show();
+          chrome.storage.sync.set({'token': res.token}, function() {
+            console.log('Settings saved');
+            chrome.storage.sync.get('token', function(value) {
+              console.log(value);
+            });
+          });
+        } else {
+          message("Invalid Email or Password, please try again");
+        }
+      }
+    });
   };
 
 }

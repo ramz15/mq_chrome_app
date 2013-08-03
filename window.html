@@ -8,7 +8,7 @@
 </head>
 <body >
 
-<section id="main" ng-controller="MarqueedController">
+<section id="main" ng-controller="MarqueedController" ng-init="init()">
 
   <div id="sign_up_box">
     <div class="mq-shots-logo"><img src="images/mq_logo.png" width="170px"></div>
@@ -20,7 +20,7 @@
 
     <div id="login_form">
       <form ng-submit="loginUser()">
-        <input class="input-field left-input" placeholder="EMAIL" size="30" type="email" value="">
+        <input id="login_email"  class="input-field left-input" placeholder="EMAIL" size="30" type="email" value="">
         <input id="login_password" class="input-field" name="user[password]" placeholder="PASSWORD" size="30" type="password">
         <input class="login-submit submit-button" name="commit" type="submit" value="LOGIN">
       </form>

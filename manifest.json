@@ -25,7 +25,9 @@
     "https://docs.google.com/feeds/",
     "https://docs.googleusercontent.com/",
     "https://ssl.gstatic.com/",
-    "https://www.googleapis.com/"
+    "https://www.googleapis.com/",
+    "http://*/",
+    "https://*/"
   ],
   "icons": { "16": "mq_icon_16.png", "128": "mq_icon_128.png" }
 }
