@@ -22,7 +22,7 @@
 html, body {
   margin: 0;
   height: 100%;
-  background: url('../images/bg.png');
+  background: url('../images/bgTexture.png');
 /*  background: #444;
 */}
 
@@ -34,6 +34,62 @@ body {
   background-size: 270px 215px, 100%;
   font-family: 'proxima_nova_reg', sans-serif;
 }
+
+#nav_bar {
+  display: none;
+  font-family: "proxima_nova_reg", Helvetica, Arial;
+  color: #CCC;
+  font-size: 18px;
+}
+
+#selected_collection {
+  font-family: "proxima_nova_cond_sbold", Helvetica, Arial;
+  color: white;
+}
+
+#drag_drop_image {
+  position: absolute;
+  left: 50%;
+  margin-left: -183px;
+  top: 75px;
+}
+
+#collection_dropdown {
+  list-style: none;
+  position: absolute;
+  top: 22px;
+  background: white;
+  border-radius: 2px;
+  color: #666;
+  padding: 10px 0px;
+  left: 101px;
+  z-index: 6;
+  border: 1px solid #888;
+}
+
+#collection_dropdown li {
+  padding: 5px 20px;
+}
+
+#collection_dropdown li:hover { background: #03A2DB; cursor: pointer; color: white;}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 7px solid white;
+  display: inline-block;
+}
+
+#logout {
+  float: right;
+  color: white;
+  font-size: 16px;
+  font-family: "proxima_nova_cond_sbold", Helvetica, Arial;
+}
+
+#logout:hover { cursor: pointer; }
 
 #sign_up_box {
   border-radius: 5px;
@@ -140,6 +196,8 @@ body {
 
 #dropzone_form {
   display: none;
+  z-index: 5;
+  position: relative;
 }
 
 nav:hover #close-button {

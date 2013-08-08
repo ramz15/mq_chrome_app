@@ -411,7 +411,7 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
     Dropzone.prototype.events = ["drop", "dragstart", "dragend", "dragenter", "dragover", "dragleave", "selectedfiles", "addedfile", "removedfile", "thumbnail", "error", "processing", "processingmultiple", "uploadprogress", "totaluploadprogress", "sending", "sendingmultiple", "success", "successmultiple", "canceled", "canceledmultiple", "complete", "completemultiple", "reset"];
 
     Dropzone.prototype.defaultOptions = {
-      url: "http://www.marq.com:3000/images",
+      url: "https://marqueed-dev.s3.amazonaws.com/",
       method: "post",
       withCredentials: false,
       parallelUploads: 2,
@@ -591,6 +591,8 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
         if (file._removeLink) {
           return file._removeLink.textContent = this.options.dictRemoveFile;
         }
+        // simulate click when upload is finished to make call inside Angular scope
+        $('#save_image').click();
       },
       completemultiple: noop,
       previewTemplate: "<div class=\"dz-preview dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"dz-progress\"><span class=\"dz-upload\" data-dz-uploadprogress></span></div>\n  <div class=\"dz-success-mark\"><span>✔</span></div>\n  <div class=\"dz-error-mark\"><span>✘</span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>"
@@ -723,9 +725,9 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
       if (this.element.tagName === "form") {
         this.element.setAttribute("enctype", "multipart/form-data");
       }
-      if (this.element.classList.contains("dropzone") && !this.element.querySelector(".dz-message")) {
-        this.element.appendChild(Dropzone.createElement("<div class=\"dz-default dz-message\"><span>" + this.options.dictDefaultMessage + "</span></div>"));
-      }
+      // if (this.element.classList.contains("dropzone") && !this.element.querySelector(".dz-message")) {
+      //   this.element.appendChild(Dropzone.createElement("<div class=\"dz-default dz-message\"><span>" + this.options.dictDefaultMessage + "</span></div>"));
+      // }
       if (this.clickableElements.length) {
         setupHiddenFileInput = function() {
           if (_this.hiddenFileInput) {

@@ -10,6 +10,18 @@
 
 <section id="main" ng-controller="MarqueedController" ng-init="init()">
 
+  <div id="nav_bar">
+    <a id="logout" ng-click="logoutUser()">SIGN OUT</a>
+    <div id="collection_dropdown_box">
+      Upload to: 
+      <span id="selected_collection" data-collection-id="" ng-click="show = !show">
+        From my computer <div class="arrow-down"></div>
+      </span>
+      <ul id="collection_dropdown" ng-show="show"></ul>
+    </div>
+    <img id="drag_drop_image" src="images/emptyStateImage.png">
+  </div>
+
   <div id="sign_up_box">
     <div class="mq-shots-logo"><img src="images/mq_logo.png" width="170px"></div>
     <div class="screenshots">Screenshots!</div>
@@ -40,7 +52,17 @@
 
   </div>
 
-  <form action="/file-upload" class="dropzone" id="dropzone_form"></form>
+  <form action="https://marqueed-dev.s3.amazonaws.com/" method="post" class="dropzone" id="dropzone_form">
+    <input name="key" type="hidden" value="preprocess/1234567890/1234567890" id="s3_key">
+    <input name="acl" type="hidden" value="public-read">
+    <input name="policy" type="hidden" value="#encoded policy goes here#" id="s3_policy">
+    <input name="signature" type="hidden" value="<<signature goes here>>" id="s3_sig">
+    <input name="content-type" type="hidden" value="application/octet-stream">
+    <input name="AWSAccessKeyId" type="hidden" value="AKIAIBY5KP2CPTSJ7M5Q">
+    <input name="success_action_status" type="hidden" value="201">
+  </form>
+
+  <a id="save_image" ng-click="saveImage()"></a>
 
 </section>
 <script src="js/jquery-1.10.2.min.js"></script>
