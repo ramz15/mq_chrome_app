@@ -411,7 +411,7 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
     Dropzone.prototype.events = ["drop", "dragstart", "dragend", "dragenter", "dragover", "dragleave", "selectedfiles", "addedfile", "removedfile", "thumbnail", "error", "processing", "processingmultiple", "uploadprogress", "totaluploadprogress", "sending", "sendingmultiple", "success", "successmultiple", "canceled", "canceledmultiple", "complete", "completemultiple", "reset"];
 
     Dropzone.prototype.defaultOptions = {
-      url: "https://marqueed-dev.s3.amazonaws.com/",
+      url: "https://marqueed.s3.amazonaws.com/",
       method: "post",
       withCredentials: false,
       parallelUploads: 2,
@@ -534,6 +534,7 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
         this.previewsContainer.appendChild(file.previewElement);
         file.previewElement.querySelector("[data-dz-name]").textContent = file.name;
         file.previewElement.querySelector("[data-dz-size]").innerHTML = this.filesize(file.size);
+        file.previewElement.className += " latest-upload";
         if (this.options.addRemoveLinks) {
           file._removeLink = Dropzone.createElement("<a class=\"dz-remove\" href=\"javascript:undefined;\">" + this.options.dictRemoveFile + "</a>");
           file._removeLink.addEventListener("click", function(e) {
@@ -555,6 +556,8 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
         return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
       },
       thumbnail: function(file, dataUrl) {
+        $('#recent_uploads').show();
+        $('#drag_drop_image').hide();
         var thumbnailElement;
         file.previewElement.classList.remove("dz-file-preview");
         file.previewElement.classList.add("dz-image-preview");

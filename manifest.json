@@ -11,9 +11,7 @@
   "oauth2": {
     "client_id": "440580062850-49411snc1o961f5dvei87c1jsi58u23c.apps.googleusercontent.com",
     "scopes": [
-      "https://docs.google.com/feeds/",
-      "https://docs.googleusercontent.com/",
-      "https://www.googleapis.com/auth/drive"
+      "https://www.googleapis.com/auth/userinfo.email"
     ]
   },
   "permissions": [
@@ -22,8 +20,6 @@
     "experimental",
     "clipboardWrite",
     "storage",
-    "https://docs.google.com/feeds/",
-    "https://docs.googleusercontent.com/",
     "https://ssl.gstatic.com/",
     "https://www.googleapis.com/",
     "http://*/",

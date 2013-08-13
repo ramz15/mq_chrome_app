@@ -41,10 +41,11 @@
   background: rgba(255,255,255,0.8);
   position: relative;
   display: inline-block;
-  margin: 17px;
+  margin: 30px 50px;
   vertical-align: top;
   border: 1px solid #acacac;
   padding: 6px 6px 6px 6px;
+  margin-left: 28px;
 }
 .dropzone .dz-preview.dz-file-preview [data-dz-thumbnail],
 .dropzone-previews .dz-preview.dz-file-preview [data-dz-thumbnail] {

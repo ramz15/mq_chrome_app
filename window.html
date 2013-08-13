@@ -10,14 +10,34 @@
 
 <section id="main" ng-controller="MarqueedController" ng-init="init()">
 
+  <div id="top_nav">
+    <div id="logo"><img src="images/logo.png"/></div>
+    <div class="nav-inst">
+      <div class="circle"><div class="number"><div class="number first-num">1</div></div></div>
+      <div class="inst-text">Drop a file</div>
+    </div>
+    <div class="nav-inst">
+      <div class="circle"><div class="number"><div class="number">2</div></div></div>
+      <div class="inst-text">Share a link to it</div>
+      <div class="auto-copy">Auto-copied to your clipboard</div>
+    </div>
+    <div class="nav-inst">
+      <div class="circle"><div class="number"><div class="number">3</div></div></div>
+      <div class="inst-text">Start discussing</div>
+    </div>
+  </div>
+
   <div id="nav_bar">
-    <a id="logout" ng-click="logoutUser()">SIGN OUT</a>
+    <div id="settings_icon" ng-click="show = !show"><img src="images/settings.png"></div>
+    <ul id="settings_dropdown" ng-show="show">
+      <li id="tab_setting" ng-click="changeTabSetting()">Auto-open tab: <span id="tab_on_off">ON</span></li>
+      <li id="logout" ng-click="logoutUser()">SIGN OUT</li>
+    </ul>
     <div id="collection_dropdown_box">
-      Upload to: 
-      <span id="selected_collection" data-collection-id="" ng-click="show = !show">
+      <span id="selected_collection" data-collection-id="" ng-click="show_settings = !show_settings">
         From my computer <div class="arrow-down"></div>
       </span>
-      <ul id="collection_dropdown" ng-show="show"></ul>
+      <ul id="collection_dropdown" ng-show="show_settings"></ul>
     </div>
     <img id="drag_drop_image" src="images/emptyStateImage.png">
   </div>
@@ -27,7 +47,7 @@
     <div class="screenshots">Screenshots!</div>
     <div class="simple-text">The easiest way to share screenshots</div>
     <div class="signup-line"></div>
-    <div class="google-login"><img src="images/google_login.png" width="195px"></div>
+    <div class="google-login"><img src="images/google_login.png" width="195px" ng-click="googleLogin()"></div>
     <div class="or-login"><span id="or_text">OR</span> <span id="via_account">login via your Marqueed account</span></div>
 
     <div id="login_form">
@@ -36,7 +56,7 @@
         <input id="login_password" class="input-field" name="user[password]" placeholder="PASSWORD" size="30" type="password">
         <input class="login-submit submit-button" name="commit" type="submit" value="LOGIN">
       </form>
-      <div class="account-text">No account? <a id="signup_account" href="#" ng-click="showSignupForm()">SIGN UP</a></div>
+      <div class="account-text">No account? <span id="signup_account" ng-click="showSignupForm()">SIGN UP</span></div>
     </div>
 
     <div id="signup_form">
@@ -47,12 +67,17 @@
         <input id="signup_password" class="input-field" name="user[password]" placeholder="PASSWORD" size="30" type="password">
         <input class="signup-submit submit-button" name="commit" type="submit" value="SIGN UP">
       </form>
-      <div class="account-text">Got an account? <a id="login_account" href="#" ng-click="showLoginForm()">LOGIN</a></div>
+      <div class="account-text">Got an account? <span id="login_account" ng-click="showLoginForm()">LOGIN</span></div>
     </div>
+
+    <div id="invalid">Invalid Email or Password, please try again</div>
+    <img src="images/loading.gif" id="loading">
 
   </div>
 
-  <form action="https://marqueed-dev.s3.amazonaws.com/" method="post" class="dropzone" id="dropzone_form">
+  <div id="recent_uploads">Recently Uploaded:</div>
+
+  <form action="https://marqueed.s3.amazonaws.com/" method="post" class="dropzone" id="dropzone_form">
     <input name="key" type="hidden" value="preprocess/1234567890/1234567890" id="s3_key">
     <input name="acl" type="hidden" value="public-read">
     <input name="policy" type="hidden" value="#encoded policy goes here#" id="s3_policy">
@@ -63,12 +88,10 @@
   </form>
 
   <a id="save_image" ng-click="saveImage()"></a>
+  <input id="short_url" value="">
 
 </section>
 <script src="js/jquery-1.10.2.min.js"></script>
-<script src="js/util.js"></script>
-<script src="js/resumableupload.js"></script>
-<script src="js/gdocs.js"></script>
 <script src="js/angular_1.0.7.min.js"></script>
 <script src="js/app.js"></script>
 <script src="js/dropzone.js"></script>

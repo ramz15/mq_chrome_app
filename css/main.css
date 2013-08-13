@@ -27,7 +27,6 @@ html, body {
 */}
 
 body {
-  padding: 15px;
   overflow: hidden;
 /*  background: url(../img/google_drive_logo.jpg) no-repeat 80% 20%,
               -webkit-linear-gradient(bottom, #eee, rgba(255,255,255,0));*/
@@ -35,34 +34,92 @@ body {
   font-family: 'proxima_nova_reg', sans-serif;
 }
 
+#top_nav {
+  background: #666;
+  display: none;
+}
+
+#logo {
+  background: #4e4e4e;
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+#logo img { position: relative;top: 25px;left: 22px; }
+
+.circle {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  color: white;
+  background: black;
+  position: relative;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.number { position: absolute; top: 3px; left: 5px;}
+.first-num { left: 6px;}
+
+.nav-inst {
+  display: inline-block;
+  position: relative;
+  top: 22px;
+  margin: 0px 30px;
+}
+
+.inst-text {
+  color: white;
+  display: inline-block;
+  top: -10px;
+  position: relative;
+  margin-left: 5px;
+  font-size: 16px;
+}
+
+.auto-copy { 
+  font-size: 12px;
+  color: #bbb;
+  position: absolute;
+  width: 170px;
+  left: 38px;
+  top: 23px;
+}
+
 #nav_bar {
   display: none;
   font-family: "proxima_nova_reg", Helvetica, Arial;
   color: #CCC;
   font-size: 18px;
+  background: #e6e6e6;
+  color: #444;
+  padding: 10px;
+  border: 2px solid #999;
 }
 
 #selected_collection {
   font-family: "proxima_nova_cond_sbold", Helvetica, Arial;
-  color: white;
+  color: #3D3D3D;
 }
 
 #drag_drop_image {
   position: absolute;
   left: 50%;
   margin-left: -183px;
-  top: 75px;
+  top: 175px;
 }
 
 #collection_dropdown {
   list-style: none;
   position: absolute;
-  top: 22px;
+  top: 107px;
   background: white;
   border-radius: 2px;
   color: #666;
   padding: 10px 0px;
-  left: 101px;
+  left: 5px;
   z-index: 6;
   border: 1px solid #888;
 }
@@ -78,15 +135,16 @@ body {
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  border-top: 7px solid white;
+  border-top: 7px solid #3d3d3d;
   display: inline-block;
+  margin-left: 3px;
 }
 
 #logout {
-  float: right;
-  color: white;
+/*  float: right;
+  color: #3D3D3D;
   font-size: 16px;
-  font-family: "proxima_nova_cond_sbold", Helvetica, Arial;
+  font-family: "proxima_nova_cond_sbold", Helvetica, Arial;*/
 }
 
 #logout:hover { cursor: pointer; }
@@ -132,6 +190,9 @@ body {
   display: inline-block;
   margin-bottom: 27px;
 }
+
+.google-login:hover {cursor:pointer;}
+
 
 .mq-shots-logo {
   width: 170px;
@@ -226,7 +287,71 @@ nav:hover #close-button {
   font-size: 14px;
 }
 
-.account-text a {
+.account-text span{
   text-decoration: none;
   color: #1aa8e1;
+}
+
+.account-text span:hover {cursor:pointer;}
+
+#short_url { display:block; opacity: 0; }
+
+#recent_uploads { display:none; }
+
+#recent_uploads {
+  color: #ccc;
+  font-size: 16px;
+  margin: 27px 27px 15px;
+}
+
+.new-upload-url {
+  position: absolute;
+  top: 147px;
+  left: -20px;
+  text-decoration: none;
+  color: #1aa8e1;
+}
+
+#loading {
+  display: none;
+  position: absolute;
+  left: 50%;
+  margin-left: -14px;
+  bottom: 46px;
+}
+
+#settings_icon {
+  float: right;
+  opacity: 0.8;
+}
+
+#settings_dropdown {
+  position: absolute;
+  background: #fff;
+  right: 5px;
+  top: 103px;
+  list-style: none;
+  padding: 0px;
+  font-size: 16px;
+  border: 1px solid #999;
+  z-index: 7;
+}
+
+#settings_dropdown li {
+  color: #3D3D3D;
+  font-size: 16px;
+  font-family: "proxima_nova_cond_sbold", Helvetica, Arial;
+  padding: 10px;
+}
+
+#settings_dropdown li:hover { background: #03A2DB; cursor: pointer; color: white;}
+
+#invalid { 
+  display: none;
+  color: red;
+  position: absolute;
+  bottom: 51px;
+  font-size: 16px;
+  left: 50%;
+  margin-left: -144px;
 }
