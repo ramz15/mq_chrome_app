@@ -122,6 +122,8 @@ body {
   left: 5px;
   z-index: 6;
   border: 1px solid #888;
+  overflow: scroll;
+  max-height: 500px;
 }
 
 #collection_dropdown li {
@@ -312,6 +314,8 @@ nav:hover #close-button {
   color: #1aa8e1;
 }
 
+.new-upload-url:hover { cursor: pointer;}
+
 #loading {
   display: none;
   position: absolute;
@@ -335,6 +339,7 @@ nav:hover #close-button {
   font-size: 16px;
   border: 1px solid #999;
   z-index: 7;
+  display: none;
 }
 
 #settings_dropdown li {
@@ -355,3 +360,6 @@ nav:hover #close-button {
   left: 50%;
   margin-left: -144px;
 }
+
+.new-image-link { color: #222;}
+.new-image-link:hover { cursor: pointer;}

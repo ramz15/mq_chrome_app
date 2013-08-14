@@ -28,10 +28,10 @@
   </div>
 
   <div id="nav_bar">
-    <div id="settings_icon" ng-click="show = !show"><img src="images/settings.png"></div>
-    <ul id="settings_dropdown" ng-show="show">
+    <div id="settings_icon"><img id="show_settings" src="images/settings.png"></div>
+    <ul id="settings_dropdown">
       <li id="tab_setting" ng-click="changeTabSetting()">Auto-open tab: <span id="tab_on_off">ON</span></li>
-      <li id="logout" ng-click="logoutUser()">SIGN OUT</li>
+      <li id="logout" ng-click="logoutUser()">Sign Out</li>
     </ul>
     <div id="collection_dropdown_box">
       <span id="selected_collection" data-collection-id="" ng-click="show_settings = !show_settings">

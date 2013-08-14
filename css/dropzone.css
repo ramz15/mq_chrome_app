@@ -22,7 +22,7 @@
   cursor: pointer;
 }
 .dropzone.dz-clickable * {
-  cursor: default;
+  cursor: pointer;
 }
 .dropzone .dz-message {
   opacity: 1;

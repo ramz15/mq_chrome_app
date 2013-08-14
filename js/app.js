@@ -300,6 +300,7 @@ function MarqueedController($scope) {
           openTab(res.url);
         }
         $('.latest-upload').append("<a class='new-upload-url' href='"+res.url+"'>" + res.url + "</a>");
+        $('.latest-upload').wrap("<a class='new-image-link' href='"+res.url+"' />");
         $('.latest-upload').removeClass("latest-upload");
         $scope.uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
           var r, v;
@@ -347,3 +348,21 @@ function openTab(url) {
     a.target='_blank'; 
     a.click(); 
 }
+
+// hide or show settings dropdown on click
+$('html').click(function(e) {
+  var target;
+  target = $(e.target);
+  console.log(target.attr('id'));
+  if ($('#settings_dropdown').is(':visible') && target.attr('id') !== "show_settings" && target.attr('id') !== "tab_setting" && target.attr('id') !== "tab_on_off" ) {
+    console.log("hide");
+    return $('#settings_dropdown').hide();
+  } 
+  if (target.attr('id') == "show_settings" && !$('#settings_dropdown').is(':visible')) {
+    return $('#settings_dropdown').show();
+  } else {
+    if (target.attr('id') !== "tab_setting" && target.attr('id') !== "tab_on_off") {
+      return $('#settings_dropdown').hide();
+    }
+  }
+});
