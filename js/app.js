@@ -44,6 +44,9 @@ function MarqueedController($scope) {
     });
     chrome.storage.sync.get('tabSetting', function(value) {
       $scope.tabSetting = value.tabSetting;
+      if (value.tabSetting != true) {
+        $('#tab_on_off').text('OFF');
+      }
     });
   };
 
@@ -57,6 +60,10 @@ function MarqueedController($scope) {
     $('#dropzone_form').hide();
     $('#top_nav').hide();
     $('#recent_uploads').hide();
+    $('#collection_dropdown').html('');
+    $('#selected_collection').html('From my computer <div class="arrow-down"></div>');
+    $('#selected_collection').data('collection-id', '');
+    $('.new-image-link').remove();
     chrome.storage.sync.remove('token', function() {
       console.log('user logged out and chrome storage removed');
     });
@@ -103,8 +110,9 @@ function MarqueedController($scope) {
           $('#top_nav').show();
           $('#drag_drop').show();
           $('#dropzone_form').show();
+          $('#drag_drop_image').show();
           chrome.storage.sync.set({'token': res.token}, function() {
-            console.log('Settings saved');
+            $scope.userToken = res.token;
             // get user info and collections from MQ API
             $.get('https://www.marqueed.com/api/v1/api_collections.json', { token : res.token }, function(data) {
               var collections = data;
@@ -163,8 +171,9 @@ function MarqueedController($scope) {
           $("#nav_bar").show();
           $('#drag_drop').show();
           $('#dropzone_form').show();
+          $('#drag_drop_image').show();
           chrome.storage.sync.set({'token': res.token}, function() {
-            console.log('Settings saved');
+            $scope.userToken = res.token;
             // get user info and collections from MQ API
             $.get('https://www.marqueed.com/api/v1/api_collections.json', { token : res.token }, function(data) {
               var collections = data;
@@ -202,7 +211,6 @@ function MarqueedController($scope) {
     $('#loading').show();
     chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
       // Use the token.
-      console.log(token);
       var xhr = new XMLHttpRequest();
       xhr.open('GET', 'https://www.googleapis.com/oauth2/v3/userinfo?scope=email');
       xhr.setRequestHeader('Authorization', 'Bearer ' + token);
@@ -228,15 +236,15 @@ function MarqueedController($scope) {
             from_chrome_app: true,
           },
           success: function(res) {
-            console.log(res.token);
             if (res.token) {
               $('#sign_up_box').hide();
               $('#top_nav').show();
               $("#nav_bar").show();
               $('#drag_drop').show();
               $('#dropzone_form').show();
+              $('#drag_drop_image').show();
               chrome.storage.sync.set({'token': res.token}, function() {
-                console.log('Settings saved');
+                $scope.userToken = res.token;
                 // get user info and collections from MQ API
                 $.get('https://www.marqueed.com/api/v1/api_collections.json', { token : res.token }, function(data) {
                   var collections = data;
@@ -280,11 +288,12 @@ function MarqueedController($scope) {
   };
 
   $scope.saveImage = function() {
-    console.log("yeeeee")
     var uuid = ($('#s3_key').val().split('/')[2]);
     // on complete save image and get url
     var collectionId = $('#selected_collection').data('collection-id')
-    console.log(collectionId)
+    console.log("image saved");
+    console.log(collectionId);
+    console.log($scope.userToken);
     $.ajax({
       type: 'post',
       url: 'https://www.marqueed.com/api/v1/api_images.json',

@@ -27,11 +27,9 @@ html, body {
 */}
 
 body {
-  overflow: hidden;
-/*  background: url(../img/google_drive_logo.jpg) no-repeat 80% 20%,
-              -webkit-linear-gradient(bottom, #eee, rgba(255,255,255,0));*/
-  background-size: 270px 215px, 100%;
-  font-family: 'proxima_nova_reg', sans-serif;
+  overflow: scroll;
+/*  background-size: 270px 215px, 100%;
+*/  font-family: 'proxima_nova_reg', sans-serif;
 }
 
 #top_nav {
