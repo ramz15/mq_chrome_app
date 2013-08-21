@@ -42,7 +42,7 @@ body {
   width: 80px;
   height: 80px;
   display: inline-block;
-  margin-right: 6px;
+  margin-right: 60px;
 }
 
 #logo img { position: relative;top: 25px;left: 22px; }
@@ -65,7 +65,7 @@ body {
   display: inline-block;
   position: relative;
   top: 22px;
-  margin: 0px 30px;
+  margin: 0px 45px;
 }
 
 .inst-text {
@@ -361,3 +361,49 @@ nav:hover #close-button {
 
 .new-image-link { color: #222;}
 .new-image-link:hover { cursor: pointer;}
+
+#back_to_uploader {
+  background: -webkit-linear-gradient(#9B9B9B, #686868);
+  border: 1px solid #666;
+  padding: 8px 10px 11px;
+  font-size: 14px;
+  color: white;
+  text-shadow: 0.2em 0.1em #444;
+  font-family: "Helvetica Neue", Helvetica, Arial;
+  right: 0px;
+  position: relative;
+  display: none;
+}
+#back_to_uploader:hover { cursor: pointer; }
+
+#back_btn { 
+  margin-right: 10px;
+  margin-left: 5px;
+  position: relative;
+  top: 3px;
+}
+
+#webview_spinner_box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -25px;
+  margin-top: -25px;
+  width: 50px;
+  height: 50px;
+  background: white;
+  border-radius: 5px;
+  display: none;
+}
+
+#spinner_webview {
+  position: relative;
+  top: 27%;
+  left: 26%;
+}
+
+#webview {
+  right: -900;
+  position: absolute;
+}
+

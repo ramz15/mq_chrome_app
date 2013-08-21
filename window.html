@@ -6,9 +6,13 @@
 <link rel="stylesheet" media="all" href="css/dropzone.css">
 <base target="_blank">
 </head>
-<body >
+<body ng-controller="MarqueedController" ng-init="init()">
 
-<section id="main" ng-controller="MarqueedController" ng-init="init()">
+<div id="back_to_uploader" ng-click="backUploader()">
+  <img src="images/arrow_back.png" id="back_btn"> BACK TO THE UPLOADER
+</div>
+
+<section id="main" >
 
   <div id="top_nav">
     <div id="logo"><img src="images/logo.png"/></div>
@@ -30,7 +34,7 @@
   <div id="nav_bar">
     <div id="settings_icon"><img id="show_settings" src="images/settings.png"></div>
     <ul id="settings_dropdown">
-      <li id="tab_setting" ng-click="changeTabSetting()">Auto-open tab: <span id="tab_on_off">ON</span></li>
+      <li id="tab_setting" ng-click="changeTabSetting()">Auto-open image: <span id="tab_on_off">ON</span></li>
       <li id="logout" ng-click="logoutUser()">Sign Out</li>
     </ul>
     <div id="collection_dropdown_box">
@@ -91,6 +95,9 @@
   <input id="short_url" value="">
 
 </section>
+
+<div id="webview_spinner_box"><img src="images/loading.gif" id="spinner_webview"></div>
+
 <script src="js/jquery-1.10.2.min.js"></script>
 <script src="js/angular_1.0.7.min.js"></script>
 <script src="js/app.js"></script>

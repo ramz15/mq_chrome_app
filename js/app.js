@@ -43,8 +43,9 @@ function MarqueedController($scope) {
       }
     });
     chrome.storage.sync.get('tabSetting', function(value) {
-      $scope.tabSetting = value.tabSetting;
-      if (value.tabSetting != true) {
+      if (value.tabSetting == false) {
+        console.log("falseyyy");
+        $scope.tabSetting = false;
         $('#tab_on_off').text('OFF');
       }
     });
@@ -103,7 +104,6 @@ function MarqueedController($scope) {
         $('#loading').hide();
       },
       success: function(res) {
-        console.log(res.token);
         if (res.token) {
           $('#sign_up_box').hide();
           $("#nav_bar").show();
@@ -164,7 +164,6 @@ function MarqueedController($scope) {
         $('#loading').hide();
       },
       success: function(res) {
-        console.log(res.token);
         if (res.token) {
           $('#sign_up_box').hide();
           $('#top_nav').show();
@@ -291,9 +290,6 @@ function MarqueedController($scope) {
     var uuid = ($('#s3_key').val().split('/')[2]);
     // on complete save image and get url
     var collectionId = $('#selected_collection').data('collection-id')
-    console.log("image saved");
-    console.log(collectionId);
-    console.log($scope.userToken);
     $.ajax({
       type: 'post',
       url: 'https://www.marqueed.com/api/v1/api_images.json',
@@ -304,12 +300,19 @@ function MarqueedController($scope) {
         from_chrome_app: true,
       },
       success: function(res) {
-        console.log(res);
         if ($scope.tabSetting) {
-          openTab(res.url);
+          $('section').hide();
+          $('#back_to_uploader').show();
+          $('#back_to_uploader').after("<webview id='webview' src='"+res.long_url+"?token="+$scope.userToken+"' style='width:900px; height:700px' autosize='on'></webview>");
+          $("#webview").animate({right:0},1200,showSpinner);
+          function showSpinner(){
+            $("#webview_spinner_box").fadeIn();
+            setTimeout(function(){$("#webview_spinner_box").hide();},4000);
+          }
         }
-        $('.latest-upload').append("<a class='new-upload-url' href='"+res.url+"'>" + res.url + "</a>");
-        $('.latest-upload').wrap("<a class='new-image-link' href='"+res.url+"' />");
+
+        $('.latest-upload').append("<a class='new-upload-url' href='"+res.long_url+"?token="+$scope.userToken+"'>" + res.url + "</a>");
+        $('.latest-upload').wrap("<a class='new-image-link' href='"+res.long_url+"?token="+$scope.userToken+"' />");
         $('.latest-upload').removeClass("latest-upload");
         $scope.uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
           var r, v;
@@ -326,6 +329,7 @@ function MarqueedController($scope) {
     })
   };
 
+  // turn tab setting on/off
   $scope.changeTabSetting = function() {
     $scope.tabSetting = !$scope.tabSetting;
     chrome.storage.sync.set({'tabSetting': $scope.tabSetting}, function() {
@@ -338,9 +342,34 @@ function MarqueedController($scope) {
 
   };
 
+  $scope.backUploader = function () {
+    $("#webview").animate({right:900},"slow",showUploader);
+    $('#back_to_uploader').animate({right:900},"slow",resetUploaderBar);
+    function showUploader(){
+      $('section').show();
+    }
+    function resetUploaderBar() {
+      $('#back_to_uploader').hide();
+      $('#back_to_uploader').css('right', '0px');
+    }
+  };
+
+  $('body').on('click', '.new-image-link', function(e) {
+    e.preventDefault();
+    var openUrl = $(this).attr("href");
+    $('section').hide();
+    $('#back_to_uploader').show();
+    $('#back_to_uploader').after("<webview id='webview' src='"+openUrl+"' style='width:900px; height:700px' autosize='on'></webview>");
+    $("#webview").animate({right:0},1200,showSpinner);
+    function showSpinner(){
+      $("#webview_spinner_box").fadeIn();
+      setTimeout(function(){$("#webview_spinner_box").hide();},4000);
+    }
+  });
+
 }
 
-// 
+// select a collection to post to - change collection-id data and text
 $('#collection_dropdown').on('click', '.collection-item', function(e) {
   var collectionName;
   collectionName = $(this).text();
@@ -348,9 +377,9 @@ $('#collection_dropdown').on('click', '.collection-item', function(e) {
   $('#selected_collection').html(collectionName + " <div class='arrow-down'></div>");
   $('#selected_collection').data('collection-id', collectionId);
   $('#collection_dropdown').hide();
-  console.log($('#selected_collection'));
 });
 
+// open image in a new tab in Chrome browser
 function openTab(url) { 
     var a = document.createElement('a'); 
     a.href = url; 
@@ -362,9 +391,7 @@ function openTab(url) {
 $('html').click(function(e) {
   var target;
   target = $(e.target);
-  console.log(target.attr('id'));
   if ($('#settings_dropdown').is(':visible') && target.attr('id') !== "show_settings" && target.attr('id') !== "tab_setting" && target.attr('id') !== "tab_on_off" ) {
-    console.log("hide");
     return $('#settings_dropdown').hide();
   } 
   if (target.attr('id') == "show_settings" && !$('#settings_dropdown').is(':visible')) {
@@ -375,3 +402,7 @@ $('html').click(function(e) {
     }
   }
 });
+
+
+
+
