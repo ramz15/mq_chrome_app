@@ -287,8 +287,8 @@
   -moz-animation: loading 0.4s linear infinite;
   -o-animation: loading 0.4s linear infinite;
   -ms-animation: loading 0.4s linear infinite;
-  animation: loading 0.4s linear infinite;
-  -webkit-transition: width 0.3s ease-in-out;
+/*  animation: loading 0.4s linear infinite;
+*/  -webkit-transition: width 0.3s ease-in-out;
   -moz-transition: width 0.3s ease-in-out;
   -o-transition: width 0.3s ease-in-out;
   -ms-transition: width 0.3s ease-in-out;

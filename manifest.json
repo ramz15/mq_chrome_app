@@ -1,7 +1,7 @@
 {
   "name": "Marqueed Screenshots",
   "description": "Simple Screenshot Sharing",
-  "version": "0.4",
+  "version": "0.5",
   "app": {
     "background": {
       "scripts": ["js/background.js"]

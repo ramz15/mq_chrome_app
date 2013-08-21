@@ -300,6 +300,10 @@ function MarqueedController($scope) {
         from_chrome_app: true,
       },
       success: function(res) {
+        // copy short url
+        $('#short_url').val(res.url);
+        $('#short_url').select();
+        document.execCommand("Copy");
         if ($scope.tabSetting) {
           $('section').hide();
           $('#back_to_uploader').show();
@@ -322,9 +326,6 @@ function MarqueedController($scope) {
         });
         var s3_url = "preprocess/" + $scope.uuid + "/" + $scope.uuid;
         $('#s3_key').val(s3_url);
-        $('#short_url').val(res.url);
-        $('#short_url').select();
-        document.execCommand("Copy");
       }
     })
   };
